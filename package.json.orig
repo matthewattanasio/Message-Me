@@ -17,6 +17,10 @@
   },
   "homepage": "https://github.com/noobs2legendz/chatman2#readme",
   "dependencies": {
+<<<<<<< HEAD
+    "webpack": "^1.13.1"
+=======
     "express": "^4.14.0"
+>>>>>>> 8a10ee5c9cca9aaf99e47440d17020cd5bb417d4
   }
 }
