@@ -1,0 +1,19 @@
+{
+  "name": "chatman2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "help"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noobs2legendz/chatman2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noobs2legendz/chatman2/issues"
+  },
+  "homepage": "https://github.com/noobs2legendz/chatman2#readme"
+}
