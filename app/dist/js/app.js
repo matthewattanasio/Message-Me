@@ -64,15 +64,194 @@
 
 
 	var App = React.createClass({
-	    displayName: 'App',
+	  displayName: 'App',
 
-	    render: function render() {
-	        return React.createElement(
-	            _MuiThemeProvider2.default,
-	            null,
-	            React.createElement(_blah2.default, null)
-	        );
-	    }
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        'nav',
+	        { className: 'navbar navbar-inverse' },
+	        React.createElement(
+	          'div',
+	          { className: 'container' },
+	          React.createElement(
+	            'div',
+	            { className: 'navbar-header' },
+	            React.createElement(
+	              'button',
+	              { type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#navbar', 'aria-expanded': 'false', 'aria-controls': 'navbar' },
+	              React.createElement(
+	                'span',
+	                { className: 'sr-only' },
+	                'Toggle navigation'
+	              ),
+	              React.createElement('span', { className: 'icon-bar' }),
+	              React.createElement('span', { className: 'icon-bar' }),
+	              React.createElement('span', { className: 'icon-bar' })
+	            ),
+	            React.createElement(
+	              'a',
+	              { className: 'navbar-brand', href: '#' },
+	              'Project name'
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { id: 'navbar', 'class': 'collapse navbar-collapse' },
+	            React.createElement(
+	              'ul',
+	              { className: 'nav navbar-nav' },
+	              React.createElement(
+	                'li',
+	                { className: 'active' },
+	                React.createElement(
+	                  'a',
+	                  { href: '#' },
+	                  'Home'
+	                )
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                React.createElement(
+	                  'a',
+	                  { href: '#about' },
+	                  'About'
+	                )
+	              ),
+	              React.createElement(
+	                'li',
+	                null,
+	                React.createElement(
+	                  'a',
+	                  { href: '#contact' },
+	                  'Contact'
+	                )
+	              )
+	            )
+	          )
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'container' },
+	        React.createElement(
+	          'div',
+	          { className: 'row' },
+	          React.createElement(
+	            'div',
+	            { className: 'col-xs-6 col-lg-4 img' },
+	            React.createElement(
+	              'div',
+	              { className: 'class-item' },
+	              ' '
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              React.createElement(
+	                'a',
+	                { className: 'btn btn-default tags', href: '#', role: 'button' },
+	                '#cat »'
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'col-xs-6 col-lg-4 img' },
+	            React.createElement(
+	              'div',
+	              { className: 'class-item' },
+	              ' '
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              React.createElement(
+	                'a',
+	                { className: 'btn btn-default tags', href: '#', role: 'button' },
+	                '#dog »'
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'col-xs-6 col-lg-4 img' },
+	            React.createElement(
+	              'div',
+	              { className: 'class-item' },
+	              ' '
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              React.createElement(
+	                'a',
+	                { className: 'btn btn-default tags', href: '#', role: 'button' },
+	                '#kiss »'
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'col-xs-6 col-lg-4 img' },
+	            React.createElement(
+	              'div',
+	              { className: 'class-item' },
+	              ' '
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              React.createElement(
+	                'a',
+	                { className: 'btn btn-default tags', href: '#', role: 'button' },
+	                '#sex »'
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'col-xs-6 col-lg-4 img' },
+	            React.createElement(
+	              'div',
+	              { className: 'class-item' },
+	              ' '
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              React.createElement(
+	                'a',
+	                { className: 'btn btn-default tags', href: '#', role: 'button' },
+	                '#weed »'
+	              )
+	            )
+	          ),
+	          React.createElement(
+	            'div',
+	            { className: 'col-xs-6 col-lg-4 img' },
+	            React.createElement(
+	              'div',
+	              { className: 'class-item' },
+	              ' '
+	            ),
+	            React.createElement(
+	              'p',
+	              null,
+	              React.createElement(
+	                'a',
+	                { className: 'btn btn-default tags', href: '#', role: 'button' },
+	                '#shit »'
+	              )
+	            )
+	          )
+	        )
+	      )
+	    );
+	  }
 	});
 
 	_reactDom2.default.render(React.createElement(App, null), document.getElementsByTagName('body')[0]);
