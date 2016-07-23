@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
 
 //postgres
 
-app.get('/db', function (request, res) {
+app.get('/items', function (request, res) {
   pg.connect( 'postgres://uffenisozqdsxl:vhQncKyzPtSGZj78ygXve9M_NJ@ec2-54-225-89-110.compute-1.amazonaws.com:5432/dfq5t551ivghpb?ssl=true', function(err, client, done) {
    console.log(err);
     client.query('SELECT * FROM items', function(err, result) {
@@ -31,6 +31,11 @@ app.get('/db', function (request, res) {
 
 
 app.listen(port, function () {
+<<<<<<< HEAD
 	console.log('Example app listening on port!' + port );
 });
 
+=======
+	console.log('Example app listening on port 3000!');
+});
+>>>>>>> 4be0e78bdfd078ad03c6e12792f37a4e5a60a2e5
