@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/noobs2legendz/chatman2/issues"
   },
-  "homepage": "https://github.com/noobs2legendz/chatman2#readme"
+  "homepage": "https://github.com/noobs2legendz/chatman2#readme",
+  "dependencies": {
+    "webpack": "^1.13.1"
+  }
 }
