@@ -2,16 +2,9 @@ var gulp = require('gulp');
 var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var connect = require('gulp-connect');
+var webpack = require('webpack-stream');
 var open = require('gulp-open');
-var sass = require('gulp-sass');
 var port = process.env.port || 3000;
-
-gulp.task('sass', function() {
-    gulp.src('./app/src/scss/**/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('./app/dist'));
-});
-
 
 gulp.task('watch', function() {
     gulp.watch('./app/index.html', ['html']);
@@ -26,4 +19,4 @@ gulp.task('webpack', function() {
 	  .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('default', ['sass', 'webpack']);
+gulp.task('default', ['watch', 'webpack']);

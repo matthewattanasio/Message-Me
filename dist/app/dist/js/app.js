@@ -62,7 +62,6 @@
 
 	var React = __webpack_require__(167);
 
-
 	var App = React.createClass({
 	    displayName: 'App',
 

@@ -16,5 +16,6 @@ module.exports = {
     },
     output: {
         filename: './app/dist/js/[name].js'
-    }
+    },
+    watch: true
 };
