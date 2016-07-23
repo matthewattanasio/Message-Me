@@ -28,14 +28,7 @@ app.get('/items', function (request, res) {
   });
 });
 
-
-
 app.listen(port, function () {
-<<<<<<< HEAD
 	console.log('Example app listening on port!' + port );
 });
 
-=======
-	console.log('Example app listening on port 3000!');
-});
->>>>>>> 4be0e78bdfd078ad03c6e12792f37a4e5a60a2e5
