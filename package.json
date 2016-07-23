@@ -17,11 +17,11 @@
   },
   "homepage": "https://github.com/noobs2legendz/chatman2#readme",
   "dependencies": {
+    "babel-preset-react": "^6.11.1",
     "bower": "^1.7.9",
     "express": "^4.14.0",
     "gulp": "^3.9.1",
-    "babel-preset-react": "^6.11.1",
-    "express": "^4.14.0",
+    "pg": "6.0.3",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "webpack": "^1.13.1"
