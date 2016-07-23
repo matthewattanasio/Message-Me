@@ -1,6 +1,7 @@
 var React = require('react');
 import ReactDOM from 'react-dom';
 import MyAwesomeReactComponent from './blah';
+import MyAwesomeReactComponent2 from './test';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 var App = React.createClass({
