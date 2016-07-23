@@ -1,13 +1,12 @@
 var React = require('react');
 import ReactDOM from 'react-dom';
 import MyAwesomeReactComponent from './blah';
-import MyAwesomeReactComponent2 from './test';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 var App = React.createClass({
     render: function() {
         return (
-		 	     <div>  	         	          				     
+		 	     <div>
 			<nav className="navbar navbar-inverse">
 			  <div className="container">
 			    <div className="navbar-header">
@@ -27,8 +26,8 @@ var App = React.createClass({
 			      </ul>
 			    </div>
 			  </div>
-			</nav>	
-		<div className="container">      	          
+			</nav>
+		<div className="container">
 		  <div className="row">
             <div className="col-xs-6 col-lg-4 img">
             	<div className="class-item"> </div>
@@ -56,7 +55,7 @@ var App = React.createClass({
             </div>
           </div>
           </div>
-          </div>  
+          </div>
        	);
     }
 });

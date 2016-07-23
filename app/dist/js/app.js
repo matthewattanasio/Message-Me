@@ -54,10 +54,6 @@
 
 	var _blah2 = _interopRequireDefault(_blah);
 
-	var _test = __webpack_require__(357);
-
-	var _test2 = _interopRequireDefault(_test);
-
 	var _MuiThemeProvider = __webpack_require__(200);
 
 	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
@@ -31219,32 +31215,6 @@
 	};
 
 	exports.default = new Typography();
-
-/***/ },
-/* 357 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _react = __webpack_require__(167);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _RaisedButton = __webpack_require__(173);
-
-	var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	var MyAwesomeReactComponent = function MyAwesomeReactComponent() {
-	  return _react2.default.createElement(_RaisedButton2.default, { label: 'test' });
-	};
-
-	exports.default = MyAwesomeReactComponent2;
 
 /***/ }
 /******/ ]);
