@@ -12,14 +12,6 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('./app/dist'));
 });
 
-gulp.task('browserify', function() {
-    browserify('./app/src/js/app.js')
-    .transform('reactify', { 'es6': true })
-    .bundle()
-    .pipe(source('app.js'))
-    .pipe(gulp.dest('./app/dist'));
-});
-
 gulp.task('connect', function() {
     connect.server({
         root: 'app',
@@ -55,5 +47,4 @@ gulp.task('watch', function() {
     gulp.watch('./app/src/**/*.js', ['browserify']);
 });
 
-gulp.task('default', ['browserify', 'sass']);
-gulp.task('serve', ['browserify', 'sass', 'connect', 'open', 'watch']);
+gulp.task('default', ['sass']);
