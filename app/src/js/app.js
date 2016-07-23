@@ -1,10 +1,17 @@
 var React = require('react');
+import ReactDOM from 'react-dom';
 
+import MyAwesomeReactComponent from './blah';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 var App = React.createClass({
     render: function() {
-        return (<p>Hello {this.props.name}!</p>);
+        return (
+  <MuiThemeProvider>
+    <MyAwesomeReactComponent />
+  </MuiThemeProvider>
+        	);
     }
 });
 
 
-React.render(<App />, document.getElementsByTagName('body')[0]);
+ReactDOM.render(<App />, document.getElementsByTagName('body')[0]);
