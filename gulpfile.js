@@ -12,48 +12,18 @@ gulp.task('sass', function() {
         .pipe(gulp.dest('./app/dist'));
 });
 
-gulp.task('browserify', function() {
-    browserify('./app/src/js/app.js')
-    .transform('reactify', { 'es6': true })
-    .bundle()
-    .pipe(source('app.js'))
-    .pipe(gulp.dest('./app/dist'));
-});
-
-gulp.task('connect', function() {
-    connect.server({
-        root: 'app',
-        port: port,
-        livereload: true
-    });
-});
-
-gulp.task('open', function(){
-    var options = {
-        url: 'http://localhost:' + port,
-    };
-    gulp.src('./app/index.html').pipe(open('', options));
-});
-
-gulp.task('html', function () {
-    gulp.src('./app/*.html').pipe(connect.reload());
-});
-
-gulp.task('js', function () {
-    gulp.src('./app/dist/**/*.js').pipe(connect.reload());
-});
-
-gulp.task('css', function () {
-    gulp.src('./app/dist/**/*.css').pipe(connect.reload());
-});
 
 gulp.task('watch', function() {
     gulp.watch('./app/index.html', ['html']);
     gulp.watch('./app/dist/**/*.js', ['js']);
     gulp.watch('./app/dist/**/*.css', ['css']);
     gulp.watch('./app/src/**/*.scss', ['sass']);
-    gulp.watch('./app/src/**/*.js', ['browserify']);
 });
 
-gulp.task('default', ['browserify', 'sass']);
-gulp.task('serve', ['browserify', 'sass', 'connect', 'open', 'watch']);
+gulp.task('webpack', function() {
+    gulp.src('app/src/js/app.js')
+	  .pipe(webpack( require('./webpack.config.js') ))
+	  .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('default', ['sass', 'webpack']);

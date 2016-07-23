@@ -1,100 +1,13 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>React/Redux for beginners</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.1.1/normalize.min.css" type="text/css">
-    <link rel="stylesheet" href="app.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.1/css/font-awesome.css" type="text/css" />
-  </head>
-  <body>
-    <div id="app">
-      Loading...
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.11.2/lodash.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.5.2/redux.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-with-addons.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-redux/4.4.5/react-redux.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.0.1/react-dom.js" type="text/javascript"></script>
-    <script type="text/babel">
-
-      /* IMPORTS */
-      // First lets import the libraries for the tutorial
-      const {connect, Provider} = ReactRedux; // import {connect, Provider} from 'react-redux';
-      const {createStore, compose} = Redux; // import {createStore} from 'redux';
-      const {Component} = React; // import {Component} from 'react';
-      const {map} = _; // import {map} from 'lodash'
-
-      /* REACT COMPONENT */
-      // Generally you would spilt this up into logical components
-      // and pass props around correctly etc but we are keeping it as simply as possible
-      class ListApp extends Component {
-
-        render () {
-          return (	      
-	     <div>  	         	          				     
-			<nav className="navbar navbar-inverse">
-			  <div className="container">
-			    <div className="navbar-header">
-			      <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-			        <span className="sr-only">Toggle navigation</span>
-			        <span className="icon-bar"></span>
-			        <span className="icon-bar"></span>
-			        <span className="icon-bar"></span>
-			      </button>
-			      <a className="navbar-brand" href="#">Project name</a>
-			    </div>
-			    <div id="navbar" class="collapse navbar-collapse">
-			      <ul className="nav navbar-nav">
-			        <li className="active"><a href="#">Home</a></li>
-			        <li><a href="#about">About</a></li>
-			        <li><a href="#contact">Contact</a></li>
-			      </ul>
-			    </div>
-			  </div>
-			</nav>	
-		<div className="container">      	          
-		  <div className="row">
-            <div className="col-xs-6 col-lg-4 img">
-            	<div className="class-item"> </div>
-              <p><a className="btn btn-default tags" href="#" role="button">#cat »</a></p>
-            </div>
-            <div className="col-xs-6 col-lg-4 img">
-              <div className="class-item"> </div>
-              <p><a className="btn btn-default tags" href="#" role="button">#dog »</a></p>
-            </div>
-            <div className="col-xs-6 col-lg-4 img">
-              <div className="class-item"> </div>
-              <p><a className="btn btn-default tags" href="#" role="button">#kiss »</a></p>
-            </div>
-            <div className="col-xs-6 col-lg-4 img">
-              <div className="class-item"> </div>
-              <p><a className="btn btn-default tags" href="#" role="button">#sex »</a></p>
-            </div>
-            <div className="col-xs-6 col-lg-4 img">
-              <div className="class-item"> </div>
-              <p><a className="btn btn-default tags" href="#" role="button">#weed »</a></p>
-            </div>
-            <div className="col-xs-6 col-lg-4 img">
-              <div className="class-item"> </div>
-              <p><a className="btn btn-default tags" href="#" role="button">#shit »</a></p>
-            </div>
-          </div>
-          </div>
-          </div>  
-		  	);
-        }
-      }
-      ReactDOM.render(
-          <ListApp />
-        ,
-        document.getElementById('app')
-      );
-
-    </script>
-
-  </body>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+    <link rel="stylesheet" href="app/dist/css/style.css">
+</head>
+<body>
+    <script src="app/dist/js/app.js"></script>
+</body>
 </html>
