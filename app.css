@@ -1,0 +1,17 @@
+.img{
+	background: gray;
+
+
+}
+
+.tags{
+	color:white;
+}
+
+.class-item {
+	width: 100%;
+	padding-bottom: 75%;
+	background:url('img.jpg');
+	background-repeat: no-repeat;
+	background-position: right top;
+}
