@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/noobs2legendz/chatman2#readme",
   "dependencies": {
+    "bower": "^1.7.9",
     "express": "^4.14.0",
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "sass": "^0.5.0"
   }
 }
