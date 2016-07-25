@@ -11,19 +11,20 @@ import Items from './items';
 // http://stackoverflow.com/a/34015469/988941
 injectTapEventPlugin();
 
-var App = React.createClass({
-    render: function() {
+class App extends React.Component {
+
+    render() {
         return (
         	<div>
         		<AppBarReact />
         		<Items />
-        		<div class="footer">
+        		<div className="footer">
         			&copy; Message Me
         		</div>
         	</div>
       );
     }
-});
+};
 
 
 
