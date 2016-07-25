@@ -15,7 +15,8 @@ module.exports = {
         app: './app/src/js/app.js'
     },
     output: {
-        filename: './app/dist/js/[name].js'
-    },
-    watch: true
+        filename: './[name].js'
+    }
+    //,
+    //watch: true
 };

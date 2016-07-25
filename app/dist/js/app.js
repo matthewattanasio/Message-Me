@@ -94,7 +94,7 @@
 	            React.createElement(
 	              'a',
 	              { className: 'navbar-brand', href: '#' },
-	              'Project name'
+	              'Project test'
 	            )
 	          ),
 	          React.createElement(
@@ -154,7 +154,7 @@
 	              React.createElement(
 	                'a',
 	                { className: 'btn btn-default tags', href: '#', role: 'button' },
-	                '#cat »'
+	                '#nah »'
 	              )
 	            )
 	          ),
@@ -20694,7 +20694,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var MyAwesomeReactComponent = function MyAwesomeReactComponent() {
-	  return _react2.default.createElement(_RaisedButton2.default, { label: 'balh' });
+	  return _react2.default.createElement(_RaisedButton2.default, { label: 'test' });
 	};
 
 	exports.default = MyAwesomeReactComponent;

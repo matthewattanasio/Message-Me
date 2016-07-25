@@ -2,11 +2,10 @@ var express = require('express');
 var pg = require('pg');
 var app = express();
 var fs = require('fs');
-
+var gulp = require('gulp');
+require('./gulpfile');
 
 var indexTemplate = fs.readFileSync('index.html', 'utf8');
-
-
 
 //sets the port the port set by heroku, if not sets to 8080.
 var port=process.env.PORT || 8080;

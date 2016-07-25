@@ -16,7 +16,7 @@ var App = React.createClass({
 			        <span className="icon-bar"></span>
 			        <span className="icon-bar"></span>
 			      </button>
-			      <a className="navbar-brand" href="#">Project name</a>
+			      <a className="navbar-brand" href="#">Project test</a>
 			    </div>
 			    <div id="navbar" class="collapse navbar-collapse">
 			      <ul className="nav navbar-nav">
@@ -31,7 +31,7 @@ var App = React.createClass({
 		  <div className="row">
             <div className="col-xs-6 col-lg-4 img">
             	<div className="class-item"> </div>
-              <p><a className="btn btn-default tags" href="#" role="button">#cat »</a></p>
+              <p><a className="btn btn-default tags" href="#" role="button">#nah »</a></p>
             </div>
             <div className="col-xs-6 col-lg-4 img">
               <div className="class-item"> </div>
@@ -55,7 +55,7 @@ var App = React.createClass({
             </div>
           </div>
           </div>
-          </div>
+        </div>
        	);
     }
 });
