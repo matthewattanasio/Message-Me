@@ -6,6 +6,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 //Import Files
 import AppBarReact from './appBar';
 import Items from './items';
+import TextArea from './textArea';
+
 
 // Needed for onTouchTap
 // http://stackoverflow.com/a/34015469/988941
@@ -18,6 +20,7 @@ class App extends React.Component {
         	<div>
         		<AppBarReact />
         		<Items />
+        		<TextArea />
         		<div className="footer">
         			&copy; Message Me
         		</div>

@@ -68,6 +68,10 @@
 
 	var _items2 = _interopRequireDefault(_items);
 
+	var _textArea = __webpack_require__(536);
+
+	var _textArea2 = _interopRequireDefault(_textArea);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -102,6 +106,7 @@
 	                null,
 	                React.createElement(_appBar2.default, null),
 	                React.createElement(_items2.default, null),
+	                React.createElement(_textArea2.default, null),
 	                React.createElement(
 	                    'div',
 	                    { className: 'footer' },
@@ -28607,9 +28612,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	//import Drawer from 'material-ui/Drawer';
-	//import AppBar from 'material-ui/AppBar';
-
 
 	var AppBarReact = function (_Component) {
 		_inherits(AppBarReact, _Component);
@@ -28660,17 +28662,17 @@
 							_react2.default.createElement(
 								_materialUi.MenuItem,
 								{ onTouchTap: this.handleClose.bind(this) },
-								'Menu Item 1'
+								'Fuck Yeah'
 							),
 							_react2.default.createElement(
 								_materialUi.MenuItem,
 								{ onTouchTap: this.handleClose.bind(this) },
-								'Menu Item 2'
+								'Mad Dog'
 							),
 							_react2.default.createElement(
 								_materialUi.MenuItem,
 								{ onTouchTap: this.handleClose.bind(this) },
-								'Menu Item 3'
+								'Legend'
 							)
 						),
 						_react2.default.createElement(TheAppBar, null)
@@ -58313,6 +58315,76 @@
 	}(_react.Component);
 
 	exports.default = Items;
+
+/***/ },
+/* 536 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(173);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _materialUi = __webpack_require__(338);
+
+	var _MuiThemeProvider = __webpack_require__(172);
+
+	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var textArea = function (_Component) {
+		_inherits(textArea, _Component);
+
+		function textArea() {
+			_classCallCheck(this, textArea);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(textArea).apply(this, arguments));
+		}
+
+		_createClass(textArea, [{
+			key: 'render',
+			value: function render() {
+
+				return _react2.default.createElement(
+					_MuiThemeProvider2.default,
+					null,
+					_react2.default.createElement(
+						'div',
+						{ className: 'chat' },
+						_react2.default.createElement(_materialUi.TextField, {
+							hintText: 'Try Saying Hello',
+							floatingLabelText: 'Say Something',
+							multiLine: true,
+							rows: 1,
+							className: 'chat-box' }),
+						_react2.default.createElement(
+							_materialUi.FloatingActionButton,
+							null,
+							'Send'
+						)
+					)
+				);
+			}
+		}]);
+
+		return textArea;
+	}(_react.Component);
+
+	exports.default = textArea;
 
 /***/ }
 /******/ ]);

@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import { Drawer, AppBar, MenuItem} from 'material-ui'
-//import Drawer from 'material-ui/Drawer';
-//import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
@@ -36,16 +34,15 @@ class AppBarReact extends Component {
 				<Drawer
 	              docked={false}
 	              open={this.state.open}>
-	              <MenuItem onTouchTap={this.handleClose.bind(this)}>Menu Item 1</MenuItem>
-	              <MenuItem onTouchTap={this.handleClose.bind(this)}>Menu Item 2</MenuItem>
-	              <MenuItem onTouchTap={this.handleClose.bind(this)}>Menu Item 3</MenuItem>
+	              <MenuItem onTouchTap={this.handleClose.bind(this)}>Fuck Yeah</MenuItem>
+	              <MenuItem onTouchTap={this.handleClose.bind(this)}>Mad Dog</MenuItem>
+	              <MenuItem onTouchTap={this.handleClose.bind(this)}>Legend</MenuItem>
 	            </Drawer>
 				<TheAppBar />
 			</header>
 			</MuiThemeProvider>
 		);
 	}
-
 };
 
 export default AppBarReact;
