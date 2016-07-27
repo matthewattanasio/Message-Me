@@ -3,6 +3,8 @@ import Avatar from 'material-ui/Avatar';
 import List from 'material-ui/List/List';
 import ListItem from 'material-ui/List/ListItem';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { connect } from "react-redux";
+import { fetchMessages } from '../actions/messageActions';
 
 import {
 	blue300,
@@ -15,31 +17,26 @@ import {
 
 const style = {margin: 5};
 
+
+@connect((store) => {
+	return {
+		messages: store.messages.messages,
+	};
+})
 class Items extends Component {
 
+	componentWillMount() {
+		this.props.dispatch( fetchMessages() )
+	}
+
 	render() {
-
-		const TheItems = () => (
-		  	<List>
-				<ListItem
-			      disabled={true}
-			      leftAvatar={
-			        <Avatar
-			          color={deepOrange300}
-			          backgroundColor={purple500}
-			          size={30}
-			          style={style}
-			        >M
-			        </Avatar>
-			      }
-			    >Matt is fucking awesome
-			    </ListItem>
-		  	</List>
-		);
-
 		return (
 			 <MuiThemeProvider>
-			 	<TheItems />
+			 	<List>
+			 		{this.props.messages.map(function(message){
+			 			return <ListItem disabled={true} leftAvatar={<Avatar color={deepOrange300} backgroundColor={purple500} size={30} style={style}>{message.name.charAt(0)}</Avatar>}>{message.msg}</ListItem>;
+			 		})}
+			 	</List>
 			 </MuiThemeProvider>
 		);
 	}

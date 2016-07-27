@@ -52,8 +52,4 @@ class TextArea extends Component {
 	}
 }
 
-TextArea.propTypes = {
-	threadID: React.PropTypes.string.isRequired,
-}
-
 module.exports = TextArea;

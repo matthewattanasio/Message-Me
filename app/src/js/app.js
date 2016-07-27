@@ -1,36 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from "redux";
-
-import reducers from './reducers';
 
 //Import Component files
 import AppBarReact from './components/appBar';
 import Items from './components/items';
 import TextArea from './components/textArea';
 
+//Import the store component
+import store from "./store";
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin(); // Needed for onTouchTap http://stackoverflow.com/a/34015469/988941
 
-var testData = {
-	user: { name: "matt" },
-	messages: [1,2,3]
-};
+//import chatExampleData from './ChatExampleData';
+//chatExampleData.init() // load all data from local storage
 
-let store  = createStore(reducers, testData);
-
-
-store.subscribe(() => {
-	console.log("store Changed", store.getState());
-});
-
-store.dispatch({type: "CHANGE_NAME", payload: "Bob" });
-store.dispatch({type: "CHANGE_NAME", payload: "Bill" });
-store.dispatch({type: "ADD_MESSAGE", payload: ["this is a test"] });
-
-
+// store.dispatch((dispatcher) => {
+// 	dispatcher({type: 'FETCH_MESSAGES'});
+// 	dispatcher({type: 'RECIEVED_MESSAGES'});
+// 	//dispatcher({type: 'FETCH_MESSAGES_ERROR'});
+// });
 
 class App extends React.Component {
 
