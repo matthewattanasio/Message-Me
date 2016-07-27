@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { TextField, FloatingActionButton, ContentAdd } from 'material-ui';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from "react-redux";
-import { fetchMessages } from '../actions/messageActions';
+import { addMessage, updateMessage, processMessage } from '../actions/messageActions';
 
 const ENTER_KEY_CODE = 13;
 
@@ -10,30 +10,23 @@ const ENTER_KEY_CODE = 13;
 @connect((store) => {
 	return {
 		messages: store.messages.messages,
+		messageObj: store.messages
 	};
 })
 class TextArea extends Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			text: ''
-		};
-	}
-
   	_onChange(event, value) {
-	    this.setState({text: event.target.value});
+	    this.props.dispatch( updateMessage(value) );
 	}
 
 	_onKeyDown(event) {
+		const theMessage = this.props.messageObj;
+
 		if (event.keyCode === ENTER_KEY_CODE) {
 		  event.preventDefault();
-		  var text = this.state.text.trim();
-		  if (text) {
-		  	console.log("message is " + text);
-		    //ChatMessageActionCreators.createMessage(text, this.props.threadID);
+		  if( theMessage.tempMessage.length ) {
+		  	this.props.dispatch( processMessage( theMessage.tempMessage ) );
 		  }
-		  this.setState({text: ''});
 		}
 	}
 
@@ -47,7 +40,7 @@ class TextArea extends Component {
 			      floatingLabelText="Say Something"
 			      multiLine={true}
 			      rows={1}
-			      value={this.state.text}
+			      value={this.props.messageObj.tempMessage}
 			      onChange={this._onChange.bind(this)}
 			      onKeyDown={this._onKeyDown.bind(this)}
 			      className="chat-input" />

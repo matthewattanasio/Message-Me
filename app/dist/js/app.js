@@ -59707,6 +59707,9 @@
 	exports.fetchMessages = fetchMessages;
 	exports.registerUser = registerUser;
 	exports.addMessage = addMessage;
+	exports.updateMessage = updateMessage;
+	exports.deleteMessage = deleteMessage;
+	exports.processMessage = processMessage;
 	function fetchMessages() {
 		return {
 			type: "RECIEVED_MESSAGES",
@@ -59731,10 +59734,38 @@
 		};
 	}
 
-	function addMessage(msg) {
+	function addMessage(msg, user) {
+		var trimmedMsg = msg;
 		return {
 			type: "ADD_MESSAGE",
+			payload: {
+				id: user.id,
+				name: user.name,
+				msg: trimmedMsg
+			}
+		};
+	}
+
+	function updateMessage(msg) {
+		return {
+			type: "UPDATE_MESSAGE",
 			payload: msg
+		};
+	}
+
+	function deleteMessage() {
+		return {
+			type: "DELETE_MESSAGE",
+			payload: {}
+		};
+	}
+
+	function processMessage(msg) {
+
+		return function (dispatch, getState) {
+			var state = getState();
+			dispatch(addMessage(msg, state.user.user));
+			dispatch(deleteMessage());
 		};
 	}
 
@@ -59774,38 +59805,33 @@
 
 	var TextArea = (_dec = (0, _reactRedux.connect)(function (store) {
 		return {
-			messages: store.messages.messages
+			messages: store.messages.messages,
+			messageObj: store.messages
 		};
 	}), _dec(_class = function (_Component) {
 		_inherits(TextArea, _Component);
 
-		function TextArea(props) {
+		function TextArea() {
 			_classCallCheck(this, TextArea);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(TextArea).call(this, props));
-
-			_this.state = {
-				text: ''
-			};
-			return _this;
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(TextArea).apply(this, arguments));
 		}
 
 		_createClass(TextArea, [{
 			key: '_onChange',
 			value: function _onChange(event, value) {
-				this.setState({ text: event.target.value });
+				this.props.dispatch((0, _messageActions.updateMessage)(value));
 			}
 		}, {
 			key: '_onKeyDown',
 			value: function _onKeyDown(event) {
+				var theMessage = this.props.messageObj;
+
 				if (event.keyCode === ENTER_KEY_CODE) {
 					event.preventDefault();
-					var text = this.state.text.trim();
-					if (text) {
-						console.log("message is " + text);
-						//ChatMessageActionCreators.createMessage(text, this.props.threadID);
+					if (theMessage.tempMessage.length) {
+						this.props.dispatch((0, _messageActions.processMessage)(theMessage.tempMessage));
 					}
-					this.setState({ text: '' });
 				}
 			}
 		}, {
@@ -59823,7 +59849,7 @@
 							floatingLabelText: 'Say Something',
 							multiLine: true,
 							rows: 1,
-							value: this.state.text,
+							value: this.props.messageObj.tempMessage,
 							onChange: this._onChange.bind(this),
 							onKeyDown: this._onKeyDown.bind(this),
 							className: 'chat-input' }),
@@ -59899,7 +59925,6 @@
 		}, {
 			key: 'handleClose',
 			value: function handleClose() {
-				console.log(this.props.user.user.name.length);
 				if (this.props.user.user.name.length) {
 					this.props.dispatch((0, _userActions.registerUser)());
 				} else {
@@ -60373,11 +60398,14 @@
 
 	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
+	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 	var initialState = {
 		fetching: false,
 		fetched: false,
 		messages: [],
-		error: null
+		error: null,
+		tempMessage: ""
 	};
 
 	var messageReducer = function messageReducer() {
@@ -60402,7 +60430,18 @@
 				}
 			case "ADD_MESSAGE":
 				{
-					state = _extends({}, state, { fetching: false, fetched: false, messages: action.payload });
+					console.log(state);
+					state = _extends({}, state, { fetching: false, fetched: false, messages: [].concat(_toConsumableArray(state.messages), [action.payload]) });
+					break;
+				}
+			case "UPDATE_MESSAGE":
+				{
+					state = _extends({}, state, { fetching: false, fetched: false, tempMessage: action.payload });
+					break;
+				}
+			case "DELETE_MESSAGE":
+				{
+					state = _extends({}, state, { fetching: false, fetched: false, tempMessage: "" });
 					break;
 				}
 		}

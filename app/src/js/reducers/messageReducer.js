@@ -4,6 +4,7 @@ const initialState = {
 	fetched: false,
 	messages: [],
 	error: null,
+	tempMessage: "",
 }
 
 const messageReducer = ( state = initialState, action ) => {
@@ -21,7 +22,16 @@ const messageReducer = ( state = initialState, action ) => {
 			break;
 		}
 		case "ADD_MESSAGE": {
-			state = { ...state, fetching: false, fetched: false, messages: action.payload };
+			console.log(state);
+			state = { ...state, fetching: false, fetched: false, messages: [...state.messages, action.payload] };
+			break;
+		}
+		case "UPDATE_MESSAGE": {
+			state = { ...state, fetching: false, fetched: false, tempMessage: action.payload };
+			break;
+		}
+		case "DELETE_MESSAGE": {
+			state = { ...state, fetching: false, fetched: false, tempMessage: "" };
 			break;
 		}
 	}

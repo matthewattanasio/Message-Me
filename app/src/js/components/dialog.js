@@ -20,7 +20,6 @@ class InitialScreen extends React.Component {
 	}
 
 	handleClose() {
-		console.log( this.props.user.user.name.length );
 		if( this.props.user.user.name.length ) {
 			this.props.dispatch( registerUser() );
 		} else {
