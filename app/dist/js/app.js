@@ -70,7 +70,11 @@
 
 	var _textArea2 = _interopRequireDefault(_textArea);
 
-	var _store = __webpack_require__(560);
+	var _dialog = __webpack_require__(560);
+
+	var _dialog2 = _interopRequireDefault(_dialog);
+
+	var _store = __webpack_require__(562);
 
 	var _store2 = _interopRequireDefault(_store);
 
@@ -78,7 +82,7 @@
 
 	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 
-	var _reactTapEventPlugin = __webpack_require__(565);
+	var _reactTapEventPlugin = __webpack_require__(568);
 
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 
@@ -125,6 +129,7 @@
 																	_react2.default.createElement(
 																					'div',
 																					null,
+																					_react2.default.createElement(_dialog2.default, null),
 																					_react2.default.createElement(_appBar2.default, null),
 																					_react2.default.createElement(_items2.default, null),
 																					_react2.default.createElement(_textArea2.default, null),
@@ -22962,37 +22967,15 @@
 	var AppBarReact = function (_Component) {
 		_inherits(AppBarReact, _Component);
 
-		function AppBarReact(props) {
+		function AppBarReact() {
 			_classCallCheck(this, AppBarReact);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AppBarReact).call(this, props));
-
-			_this.state = { open: false };
-			return _this;
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(AppBarReact).apply(this, arguments));
 		}
 
 		_createClass(AppBarReact, [{
-			key: 'handleToggle',
-			value: function handleToggle() {
-				this.setState({ open: !this.state.open });
-			}
-		}, {
-			key: 'handleClose',
-			value: function handleClose() {
-				this.setState({ open: false });
-			}
-		}, {
 			key: 'render',
 			value: function render() {
-				var _this2 = this;
-
-				var TheAppBar = function TheAppBar() {
-					return _react2.default.createElement(_materialUi.AppBar, {
-						title: 'Message Me',
-						iconClassNameRight: 'muidocs-icon-navigation-expand-more',
-						onLeftIconButtonTouchTap: _this2.handleToggle.bind(_this2)
-					});
-				};
 
 				return _react2.default.createElement(
 					_MuiThemeProvider2.default,
@@ -23000,28 +22983,10 @@
 					_react2.default.createElement(
 						'header',
 						null,
-						_react2.default.createElement(
-							_materialUi.Drawer,
-							{
-								docked: false,
-								open: this.state.open },
-							_react2.default.createElement(
-								_materialUi.MenuItem,
-								{ onTouchTap: this.handleClose.bind(this) },
-								'Fuck Yeah'
-							),
-							_react2.default.createElement(
-								_materialUi.MenuItem,
-								{ onTouchTap: this.handleClose.bind(this) },
-								'Mad Dog'
-							),
-							_react2.default.createElement(
-								_materialUi.MenuItem,
-								{ onTouchTap: this.handleClose.bind(this) },
-								'Legend'
-							)
-						),
-						_react2.default.createElement(TheAppBar, null)
+						_react2.default.createElement(_materialUi.AppBar, {
+							title: 'Message Me',
+							iconClassNameRight: 'muidocs-icon-navigation-expand-more'
+						})
 					)
 				);
 			}
@@ -59740,19 +59705,29 @@
 		value: true
 	});
 	exports.fetchMessages = fetchMessages;
+	exports.registerUser = registerUser;
 	exports.addMessage = addMessage;
 	function fetchMessages() {
 		return {
 			type: "RECIEVED_MESSAGES",
 			payload: [{
 				id: 1,
-				name: "matt",
+				name: "Don",
 				msg: "ya bro"
 			}, {
 				id: 2,
 				name: "matt",
 				msg: "nah lol"
 			}]
+		};
+	}
+
+	function registerUser() {
+		return {
+			type: "REGISTER_USER",
+			payload: {
+				hasRegistered: true
+			}
 		};
 	}
 
@@ -59771,6 +59746,8 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	var _dec, _class;
+
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -59780,6 +59757,10 @@
 	var _MuiThemeProvider = __webpack_require__(266);
 
 	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+
+	var _reactRedux = __webpack_require__(172);
+
+	var _messageActions = __webpack_require__(558);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59791,7 +59772,11 @@
 
 	var ENTER_KEY_CODE = 13;
 
-	var TextArea = function (_Component) {
+	var TextArea = (_dec = (0, _reactRedux.connect)(function (store) {
+		return {
+			messages: store.messages.messages
+		};
+	}), _dec(_class = function (_Component) {
 		_inherits(TextArea, _Component);
 
 		function TextArea(props) {
@@ -59849,7 +59834,8 @@
 		}]);
 
 		return TextArea;
-	}(_react.Component);
+	}(_react.Component)) || _class);
+
 
 	module.exports = TextArea;
 
@@ -59860,20 +59846,176 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _dec, _class;
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _materialUi = __webpack_require__(201);
+
+	var _MuiThemeProvider = __webpack_require__(266);
+
+	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+
+	var _reactRedux = __webpack_require__(172);
+
+	var _userActions = __webpack_require__(561);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var ENTER_KEY_CODE = 13;
+	var customContentStyle = {};
+
+	var InitialScreen = (_dec = (0, _reactRedux.connect)(function (store) {
+		return {
+			user: store.user
+		};
+	}), _dec(_class = function (_React$Component) {
+		_inherits(InitialScreen, _React$Component);
+
+		function InitialScreen() {
+			_classCallCheck(this, InitialScreen);
+
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(InitialScreen).apply(this, arguments));
+		}
+
+		_createClass(InitialScreen, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				this.props.dispatch((0, _userActions.fetchUser)());
+			}
+		}, {
+			key: 'handleClose',
+			value: function handleClose() {
+				console.log(this.props.user.user.name.length);
+				if (this.props.user.user.name.length) {
+					this.props.dispatch((0, _userActions.registerUser)());
+				} else {
+					alert("Enter a User name");
+				}
+			}
+		}, {
+			key: '_onChange',
+			value: function _onChange(event, value) {
+				this.props.dispatch((0, _userActions.setUserName)(value));
+			}
+		}, {
+			key: '_onKeyDown',
+			value: function _onKeyDown(event) {
+				if (event.keyCode === ENTER_KEY_CODE) {
+					event.preventDefault();
+					if (this.props.user.user.name.length) {
+						this.handleClose();
+					}
+				}
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var actions = [_react2.default.createElement(_materialUi.FlatButton, {
+					label: 'Submit',
+					primary: true,
+					onTouchTap: this.handleClose
+				})];
+
+				return _react2.default.createElement(
+					_MuiThemeProvider2.default,
+					null,
+					_react2.default.createElement(
+						_materialUi.Dialog,
+						{
+							title: 'Welcome to Message Me',
+
+							modal: true,
+							contentStyle: customContentStyle,
+							open: !this.props.user.hasRegistered
+						},
+						_react2.default.createElement(
+							'p',
+							null,
+							'Please enter your name to begin chatting to people from around the world.'
+						),
+						_react2.default.createElement(_materialUi.TextField, {
+							hintText: 'Enter User Name',
+							onChange: this._onChange.bind(this),
+							onKeyDown: this._onKeyDown.bind(this)
+						})
+					)
+				);
+			}
+		}]);
+
+		return InitialScreen;
+	}(_react2.default.Component)) || _class);
+	exports.default = InitialScreen;
+
+/***/ },
+/* 561 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.fetchUser = fetchUser;
+	exports.setUserName = setUserName;
+	exports.registerUser = registerUser;
+	//this function will be used to get the actual user
+	function fetchUser() {
+		return {
+			type: "FETCH_USER_COMPLETE",
+			payload: {}
+		};
+	}
+
+	function setUserName(name) {
+		return {
+			type: "SET_USER_NAME",
+			payload: name
+		};
+	}
+
+	function registerUser() {
+		return {
+			type: "REGISTER_USER",
+			payload: {}
+		};
+	}
+
+/***/ },
+/* 562 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
 	var _redux = __webpack_require__(179);
 
-	var _reduxLogger = __webpack_require__(561);
+	var _reduxLogger = __webpack_require__(563);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-	var _reduxThunk = __webpack_require__(562);
+	var _reduxThunk = __webpack_require__(564);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(563);
+	var _reducers = __webpack_require__(565);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
@@ -59884,7 +60026,7 @@
 	exports.default = (0, _redux.createStore)(_reducers2.default, middleware);
 
 /***/ },
-/* 561 */
+/* 563 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -60117,7 +60259,7 @@
 	module.exports = createLogger;
 
 /***/ },
-/* 562 */
+/* 564 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60145,10 +60287,10 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 563 */
+/* 565 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -60156,20 +60298,71 @@
 
 	var _redux = __webpack_require__(179);
 
-	var _messageReducer = __webpack_require__(564);
+	var _userReducer = __webpack_require__(566);
+
+	var _userReducer2 = _interopRequireDefault(_userReducer);
+
+	var _messageReducer = __webpack_require__(567);
 
 	var _messageReducer2 = _interopRequireDefault(_messageReducer);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var reducers = (0, _redux.combineReducers)({
-		messages: _messageReducer2.default
+		messages: _messageReducer2.default,
+		user: _userReducer2.default
 	});
-	//import userReducer from './userReducer';
+
 	exports.default = reducers;
 
 /***/ },
-/* 564 */
+/* 566 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var initialState = {
+		fetching: false,
+		fetched: false,
+		user: {},
+		hasRegistered: false,
+		error: null
+	};
+
+	var userReducer = function userReducer() {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+		var action = arguments[1];
+
+		switch (action.type) {
+			case "SET_USER_NAME":
+				{
+					return _extends({}, state, { user: _extends({}, state.user, { name: action.payload }) });
+					break;
+				}
+			case "RECIEVED_USER":
+				{
+					return _extends({}, state, { fetching: false, fetched: true, user: action.payload });
+					break;
+				}
+			case "REGISTER_USER":
+				{
+					return _extends({}, state, { hasRegistered: true });
+					break;
+				}
+		}
+		return state;
+	};
+
+	exports.default = userReducer;
+
+/***/ },
+/* 567 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -60219,11 +60412,11 @@
 	exports.default = messageReducer;
 
 /***/ },
-/* 565 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(566);
-	var defaultClickRejectionStrategy = __webpack_require__(567);
+	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(569);
+	var defaultClickRejectionStrategy = __webpack_require__(570);
 
 	var alreadyInjected = false;
 
@@ -60245,14 +60438,14 @@
 	  alreadyInjected = true;
 
 	  __webpack_require__(42).injection.injectEventPluginsByName({
-	    'TapEventPlugin':       __webpack_require__(568)(shouldRejectClick)
+	    'TapEventPlugin':       __webpack_require__(571)(shouldRejectClick)
 	  });
 	};
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 566 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -60307,7 +60500,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 567 */
+/* 570 */
 /***/ function(module, exports) {
 
 	module.exports = function(lastTouchEvent, clickTimestamp) {
@@ -60318,7 +60511,7 @@
 
 
 /***/ },
-/* 568 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -60346,10 +60539,10 @@
 	var EventPluginUtils = __webpack_require__(44);
 	var EventPropagators = __webpack_require__(41);
 	var SyntheticUIEvent = __webpack_require__(74);
-	var TouchEventUtils = __webpack_require__(569);
+	var TouchEventUtils = __webpack_require__(572);
 	var ViewportMetrics = __webpack_require__(75);
 
-	var keyOf = __webpack_require__(570);
+	var keyOf = __webpack_require__(573);
 	var topLevelTypes = EventConstants.topLevelTypes;
 
 	var isStartish = EventPluginUtils.isStartish;
@@ -60494,7 +60687,7 @@
 
 
 /***/ },
-/* 569 */
+/* 572 */
 /***/ function(module, exports) {
 
 	/**
@@ -60542,7 +60735,7 @@
 
 
 /***/ },
-/* 570 */
+/* 573 */
 /***/ function(module, exports) {
 
 	/**

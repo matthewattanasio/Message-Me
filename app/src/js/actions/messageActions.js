@@ -4,7 +4,7 @@ export function fetchMessages() {
 		payload: [
 			{
 				id: 1,
-				name: "matt",
+				name: "Don",
 				msg: "ya bro",
 			},
 			{
@@ -13,6 +13,15 @@ export function fetchMessages() {
 				msg: "nah lol",
 			}
 		]
+	}
+}
+
+export function registerUser() {
+	return {
+		type: "REGISTER_USER",
+		payload: {
+			hasRegistered: true
+		}
 	}
 }
 

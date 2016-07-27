@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import AppBarReact from './components/appBar';
 import Items from './components/items';
 import TextArea from './components/textArea';
+import InitialScreen from './components/dialog';
 
 //Import the store component
 import store from "./store";
@@ -29,6 +30,7 @@ class App extends React.Component {
         return (
         	<Provider store={store}>
 	        	<div>
+	        		<InitialScreen />
 	        		<AppBarReact />
 	        		<Items />
 	        		<TextArea />

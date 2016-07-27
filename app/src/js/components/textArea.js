@@ -1,9 +1,17 @@
 import React, {Component} from 'react';
 import { TextField, FloatingActionButton, ContentAdd } from 'material-ui';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { connect } from "react-redux";
+import { fetchMessages } from '../actions/messageActions';
 
 const ENTER_KEY_CODE = 13;
 
+
+@connect((store) => {
+	return {
+		messages: store.messages.messages,
+	};
+})
 class TextArea extends Component {
 
 	constructor(props) {
