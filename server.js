@@ -1,5 +1,7 @@
-import path from 'path';
-import express from 'express';
+// import path from 'path';
+// import express from 'express';
+var path = require("path");
+var express = require("express");
 
 // import handlebars from 'express-handlebars';
 // import React from 'react';
@@ -49,4 +51,5 @@ app.get('/', function(req, res){
 //   });
 // });
 
-export default app;
+//export default app;
+module.exports = app;
