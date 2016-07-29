@@ -13,7 +13,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  config.port = 3000;
+  config.port = ( process.env.PORT ) ? process.env.PORT : 3000;
   config.host = 'localhost';
   //server.locals.assetPath = 'http://localhost:8080/';
   //server.locals.isDevelopment = false;
