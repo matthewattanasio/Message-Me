@@ -24,3 +24,24 @@ footer {
 
 .dialog {
   min-height: 400px; }
+
+.chat-list {
+  margin: 0;
+  padding: 0; }
+  .chat-list li {
+    list-style-type: none;
+    padding: 10px; }
+    .chat-list li.is-response {
+      text-align: right; }
+  .chat-list span {
+    background: red;
+    border-radius: 1000px;
+    margin-right: 8px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    padding: 5px 0 0;
+    box-sizing: border-box; }

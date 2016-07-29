@@ -7,7 +7,6 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 const ENTER_KEY_CODE = 13;
 
-
 @connect((store) => {
 	return {
 		messages: store.messages.messages,
@@ -42,24 +41,24 @@ class TextArea extends Component {
 
 		return (
 			<MuiThemeProvider>
-			<div className="chat">
-				<TextField
-				  ref="chatInput"
-			      hintText=""
-			      floatingLabelText="Say Something"
-			      multiLine={true}
-			      rows={1}
-			      rowsMax={3}
-			      value={this.props.messageObj.tempMessage}
-			      onChange={this._onChange.bind(this)}
-			      onKeyDown={this._onKeyDown.bind(this)}
-			      className="chat-input"
-			      fullWidth={true}
- 				/>
-			    <FloatingActionButton onClick={this.handleSendMessage.bind(this)}>
-			    	<ContentAdd />
-			    </FloatingActionButton>
-			</div>
+				<div className="chat">
+					<TextField
+					  ref="chatInput"
+				      hintText=""
+				      floatingLabelText="Say Something"
+				      multiLine={true}
+				      rows={1}
+				      rowsMax={3}
+				      value={this.props.messageObj.tempMessage}
+				      onChange={this._onChange.bind(this)}
+				      onKeyDown={this._onKeyDown.bind(this)}
+				      className="chat-input"
+				      fullWidth={true}
+	 				/>
+				    <FloatingActionButton onClick={this.handleSendMessage.bind(this)}>
+				    	<ContentAdd />
+				    </FloatingActionButton>
+				</div>
 		    </MuiThemeProvider>
 	    );
 	}

@@ -13,7 +13,7 @@ module.exports = {
 		],
 	},
     entry: {
-        app: './app/src/js/app.js'
+        app: './app/src/js/index.js'
     },
     output: {
         filename: './[name].js'

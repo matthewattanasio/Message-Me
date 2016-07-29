@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "help"
+    "test": "help",
+    "start": "NODE_ENV=development nodemon --exec babel-node index.js -e js"
   },
   "repository": {
     "type": "git",
@@ -38,6 +39,7 @@
     "main-bower-files": "^2.13.1",
     "material-ui": "^0.15.2",
     "node-sass": "^3.8.0",
+    "nodemon": "^1.10.0",
     "pg": "6.0.3",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",

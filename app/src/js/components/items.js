@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import Avatar from 'material-ui/Avatar';
-import List from 'material-ui/List/List';
-import ListItem from 'material-ui/List/ListItem';
+import {Avatar, List, ListItem} from 'material-ui/Avatar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { connect } from "react-redux";
 import { fetchMessages } from '../actions/messageActions';
@@ -20,7 +18,8 @@ import {
 @connect((store) => {
 	return {
 		messages: store.messages.messages,
-		app: store.app
+		user: store.user.user,
+		app: store.app,
 	};
 })
 class Items extends Component {
@@ -36,7 +35,6 @@ class Items extends Component {
 
 	componentDidMount() {
     	window.addEventListener('resize', this.handleResize.bind(this) ); //event to handle resizing the message list
-    	//this.props.subscribe(  );
   	}
 
   	handleResize() {
@@ -62,33 +60,27 @@ class Items extends Component {
 			margin: 5,
 		};
 
+		const theProps = this.props;
+
 		return (
 			 <MuiThemeProvider>
-			 	<li
+			 	<ul
 			 		className="chat-list"
 			 		style={listStyle}
 			 		ref="chatList"
 			 		onScroll={this.handleScroll.bind(this)}
 			 		>
-			 		{this.props.messages.map(function(message){
-			 			return <ListItem
+			 		{this.props.messages.map( function(message) {
+			 			const messageClass = ( message.userId !== theProps.user.userId ) ? 'is-response' : '';
+			 			return <li
 			 				key={message.id}
-			 				disabled={true}
-			 				leftAvatar={
-			 					<Avatar
-			 						color={deepOrange300}
-			 						backgroundColor={purple500}
-			 						size={30}
-			 						style={listItemStyle}
-			 					>
-			 					{message.name.charAt(0)}
-			 					</Avatar>
-			 				}>
-			 				{message.msg}
-			 			</ListItem>;
+			 				className={messageClass}
+			 				>
+			 				<span>{message.name.charAt(0)}</span>{message.msg}
+			 			</li>
 			 		})}
-			 	</li>
-			 </MuiThemeProvider>
+				</ul>
+			</MuiThemeProvider>
 		);
 	}
 }

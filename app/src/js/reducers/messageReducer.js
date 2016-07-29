@@ -25,6 +25,10 @@ const messageReducer = ( state = initialState, action ) => {
 			state = { ...state, fetching: false, fetched: false, messages: [...state.messages, action.payload] };
 			break;
 		}
+		case "ADD_RESPONSE": {
+			state = { ...state, fetching: false, fetched: false, messages: [...state.messages, action.payload] };
+			break;
+		}
 		case "UPDATE_MESSAGE": {
 			state = { ...state, fetching: false, fetched: false, tempMessage: action.payload };
 			break;

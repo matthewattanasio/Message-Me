@@ -19,3 +19,11 @@ export function registerUser() {
 		payload: {},
 	}
 }
+
+export function setUserId(userId) {
+	console.log("current user id is " + userId);
+	return {
+		type: "SET_USER_ID",
+		payload: userId
+	};
+}

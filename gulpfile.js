@@ -5,13 +5,6 @@ var sass = require('gulp-sass');
 var webpack = require('webpack-stream');
 var connect = require('gulp-connect');
 
-var mainBowerFiles = require('main-bower-files');
-var filter = require('gulp-filter');
-var order = require('gulp-order');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-
-
 gulp.task('watch', function() {
     gulp.watch(['./*.html'], ['html']);
     gulp.watch('./app/src/js/**/*.js', ['webpack']);
@@ -32,9 +25,6 @@ gulp.task('html', function () {
 
 gulp.task('sass', function () {
   gulp.src([
-  		// './app/src/vendor/bootstrap-sass/assets/stylesheets/_bootstrap.scss'
-  		// // './app/src/vendor/bootstrap-material-design/dist/scss/_bootstrap-material-design.scss',
-  		// // './app/src/vendor/bootstrap-material-design/dist/scss/_ripples.scss',
   		'./app/src/scss/style.scss'
   	])
     .pipe(sass().on('error', sass.logError))
@@ -43,10 +33,13 @@ gulp.task('sass', function () {
 });
 
 gulp.task('webpack', function() {
-    gulp.src('app/src/js/app.js')
+    gulp.src('app/src/js/index.js')
 	  .pipe(webpack( require('./webpack.config.js') ))
 	  .pipe(gulp.dest('./app/dist/js'))
 	  .pipe(connect.reload());
 });
 
 gulp.task('default', ['connect','watch','webpack','sass']);
+
+gulp.task('staging', ['webpack','sass']);
+
