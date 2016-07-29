@@ -1,4 +1,4 @@
-import io from 'socket.io';
+var io = require('socket.io');
 
 //create unique UUIDs for each message
 function generateUUID(){
@@ -11,7 +11,7 @@ function generateUUID(){
     return uuid;
 }
 
-export default function (server) {
+module.exports =  function (server) {
 	const socketServer = io(server);
 	const connections = [];
 	var userId = 0;
