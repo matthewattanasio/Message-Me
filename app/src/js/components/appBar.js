@@ -12,7 +12,8 @@ class AppBarReact extends Component {
 			<header>
 				<AppBar
 				    title="Message Me"
-				    iconClassNameRight="muidocs-icon-navigation-expand-more"
+				    showMenuIconButton={false}
+				    className="appBar"
 				  />
 			</header>
 			</MuiThemeProvider>

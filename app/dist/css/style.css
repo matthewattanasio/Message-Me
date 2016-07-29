@@ -1,15 +1,26 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-.test {
-  background: black; }
-
-html {
+html, body {
   font-family: 'Roboto', sans-serif;
   padding: 0;
   margin: 0; }
 
-h1 {
-  font-size: 32px;
-  margin: 10px; }
+html {
+  background: #f9f9f9; }
 
-h2 {
-  color: red; }
+header h1 {
+  text-align: center; }
+
+footer {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  height: 35px; }
+
+.wrapper-chat {
+  padding: 10px;
+  max-width: 800px;
+  margin: 0 auto; }
+
+.dialog {
+  min-height: 400px; }

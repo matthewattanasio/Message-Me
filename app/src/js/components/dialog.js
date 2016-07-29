@@ -15,6 +15,10 @@ const customContentStyle = {};
 })
 class InitialScreen extends React.Component {
 
+	componentDidMount() {
+		this.refs.nameInput.focus();
+	}
+
   	componentWillMount() {
 		this.props.dispatch( fetchUser() );
 	}
@@ -49,17 +53,22 @@ class InitialScreen extends React.Component {
 			/>,
 		];
 
+		const style = {
+			minheight: 400,
+		}
+
 		return (
 			<MuiThemeProvider>
 				<Dialog
 				  title="Welcome to Message Me"
-
 				  modal={true}
 				  contentStyle={customContentStyle}
 				  open={!this.props.user.hasRegistered}
+				  bodyStyle={style}
 				>
 				  <p>Please enter your name to begin chatting to people from around the world.</p>
 				  <TextField
+				    ref="nameInput"
 				  	hintText="Enter User Name"
 				  	onChange={this._onChange.bind(this)}
 			      	onKeyDown={this._onKeyDown.bind(this)}

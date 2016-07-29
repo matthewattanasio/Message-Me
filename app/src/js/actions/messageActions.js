@@ -3,12 +3,12 @@ export function fetchMessages() {
 		type: "RECIEVED_MESSAGES",
 		payload: [
 			{
-				id: 1,
+				id: new Date().getTime(),
 				name: "Don",
 				msg: "ya bro",
 			},
 			{
-				id: 2,
+				id: new Date().getTime() + 1,
 				name: "matt",
 				msg: "nah lol",
 			}

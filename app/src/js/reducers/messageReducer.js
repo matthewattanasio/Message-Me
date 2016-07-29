@@ -22,7 +22,6 @@ const messageReducer = ( state = initialState, action ) => {
 			break;
 		}
 		case "ADD_MESSAGE": {
-			console.log(state);
 			state = { ...state, fetching: false, fetched: false, messages: [...state.messages, action.payload] };
 			break;
 		}

@@ -66,15 +66,15 @@
 
 	var _items2 = _interopRequireDefault(_items);
 
-	var _textArea = __webpack_require__(559);
+	var _textArea = __webpack_require__(560);
 
 	var _textArea2 = _interopRequireDefault(_textArea);
 
-	var _dialog = __webpack_require__(560);
+	var _dialog = __webpack_require__(562);
 
 	var _dialog2 = _interopRequireDefault(_dialog);
 
-	var _store = __webpack_require__(562);
+	var _store = __webpack_require__(564);
 
 	var _store2 = _interopRequireDefault(_store);
 
@@ -82,7 +82,7 @@
 
 	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 
-	var _reactTapEventPlugin = __webpack_require__(568);
+	var _reactTapEventPlugin = __webpack_require__(571);
 
 	var _reactTapEventPlugin2 = _interopRequireDefault(_reactTapEventPlugin);
 
@@ -102,48 +102,54 @@
 
 	(0, _reactTapEventPlugin2.default)(); // Needed for onTouchTap http://stackoverflow.com/a/34015469/988941
 
-	//import chatExampleData from './ChatExampleData';
-	//chatExampleData.init() // load all data from local storage
-
-	// store.dispatch((dispatcher) => {
-	// 	dispatcher({type: 'FETCH_MESSAGES'});
-	// 	dispatcher({type: 'RECIEVED_MESSAGES'});
-	// 	//dispatcher({type: 'FETCH_MESSAGES_ERROR'});
-	// });
-
 	var App = function (_React$Component) {
-					_inherits(App, _React$Component);
+		_inherits(App, _React$Component);
 
-					function App() {
-									_classCallCheck(this, App);
+		function App() {
+			_classCallCheck(this, App);
 
-									return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
-					}
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(App).apply(this, arguments));
+		}
 
-					_createClass(App, [{
-									key: 'render',
-									value: function render() {
-													return _react2.default.createElement(
-																	_reactRedux.Provider,
-																	{ store: _store2.default },
-																	_react2.default.createElement(
-																					'div',
-																					null,
-																					_react2.default.createElement(_dialog2.default, null),
-																					_react2.default.createElement(_appBar2.default, null),
-																					_react2.default.createElement(_items2.default, null),
-																					_react2.default.createElement(_textArea2.default, null),
-																					_react2.default.createElement(
-																									'div',
-																									{ className: 'footer' },
-																									'© Message Me'
-																					)
-																	)
-													);
-									}
-					}]);
+		_createClass(App, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					_reactRedux.Provider,
+					{ store: _store2.default },
+					_react2.default.createElement(
+						'div',
+						{ className: 'wrapper' },
+						_react2.default.createElement(_dialog2.default, null),
+						_react2.default.createElement(_appBar2.default, null),
+						_react2.default.createElement(
+							'div',
+							{ className: 'wrapper-chat' },
+							_react2.default.createElement(_items2.default, null),
+							_react2.default.createElement(_textArea2.default, null)
+						),
+						_react2.default.createElement(
+							'footer',
+							{ className: 'footer' },
+							'Created By Matthew Attanasio - ',
+							_react2.default.createElement(
+								'a',
+								{ href: 'http://skyfoundry.agency', target: '_blank' },
+								'Sky Foundry'
+							),
+							' | ',
+							_react2.default.createElement(
+								'a',
+								{ href: 'http://skyfoundry.agency', target: '_blank' },
+								'GitHub'
+							)
+						)
+					)
+				);
+			}
+		}]);
 
-					return App;
+		return App;
 	}(_react2.default.Component);
 
 	;
@@ -22985,7 +22991,8 @@
 						null,
 						_react2.default.createElement(_materialUi.AppBar, {
 							title: 'Message Me',
-							iconClassNameRight: 'muidocs-icon-navigation-expand-more'
+							showMenuIconButton: false,
+							className: 'appBar'
 						})
 					)
 				);
@@ -59636,6 +59643,8 @@
 
 	var _messageActions = __webpack_require__(558);
 
+	var _appActions = __webpack_require__(559);
+
 	var _colors = __webpack_require__(385);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -59646,19 +59655,21 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var style = { margin: 5 };
-
 	var Items = (_dec = (0, _reactRedux.connect)(function (store) {
 		return {
-			messages: store.messages.messages
+			messages: store.messages.messages,
+			app: store.app
 		};
 	}), _dec(_class = function (_Component) {
 		_inherits(Items, _Component);
 
-		function Items() {
+		function Items(props) {
 			_classCallCheck(this, Items);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(Items).apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Items).call(this, props));
+
+			_this.props.dispatch((0, _appActions.changeListHeight)(window.innerHeight));
+			return _this;
 		}
 
 		_createClass(Items, [{
@@ -59667,20 +59678,63 @@
 				this.props.dispatch((0, _messageActions.fetchMessages)());
 			}
 		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				window.addEventListener('resize', this.handleResize.bind(this)); //event to handle resizing the message list
+				//this.props.subscribe(  );
+			}
+		}, {
+			key: 'handleResize',
+			value: function handleResize() {
+				this.props.dispatch((0, _appActions.changeListHeight)(window.innerHeight));
+			}
+		}, {
+			key: 'handleScroll',
+			value: function handleScroll() {
+				var isScrolledToBottom = this.refs.chatList.scrollHeight - this.refs.chatList.clientHeight <= this.refs.chatList.scrollTop + 1;
+
+				if (isScrolledToBottom) {
+					this.refs.chatList.scrollTop = this.refs.chatList.scrollHeight - this.refs.chatList.clientHeight;
+				}
+			}
+		}, {
 			key: 'render',
 			value: function render() {
+
+				var listStyle = {
+					height: this.props.app.chatListHeight - (35 + 64 + 8 + 135),
+					overflowY: "auto"
+				};
+
+				var listItemStyle = {
+					margin: 5
+				};
+
 				return _react2.default.createElement(
 					_MuiThemeProvider2.default,
 					null,
 					_react2.default.createElement(
-						_List2.default,
-						null,
+						'li',
+						{
+							className: 'chat-list',
+							style: listStyle,
+							ref: 'chatList',
+							onScroll: this.handleScroll.bind(this)
+						},
 						this.props.messages.map(function (message) {
 							return _react2.default.createElement(
 								_ListItem2.default,
-								{ disabled: true, leftAvatar: _react2.default.createElement(
+								{
+									key: message.id,
+									disabled: true,
+									leftAvatar: _react2.default.createElement(
 										_Avatar2.default,
-										{ color: _colors.deepOrange300, backgroundColor: _colors.purple500, size: 30, style: style },
+										{
+											color: _colors.deepOrange300,
+											backgroundColor: _colors.purple500,
+											size: 30,
+											style: listItemStyle
+										},
 										message.name.charAt(0)
 									) },
 								message.msg
@@ -59714,11 +59768,11 @@
 		return {
 			type: "RECIEVED_MESSAGES",
 			payload: [{
-				id: 1,
+				id: new Date().getTime(),
 				name: "Don",
 				msg: "ya bro"
 			}, {
-				id: 2,
+				id: new Date().getTime() + 1,
 				name: "matt",
 				msg: "nah lol"
 			}]
@@ -59771,6 +59825,23 @@
 
 /***/ },
 /* 559 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.changeListHeight = changeListHeight;
+	function changeListHeight(height) {
+		return {
+			type: "CHANGE_CHAT_LIST_HEIGHT",
+			payload: height
+		};
+	}
+
+/***/ },
+/* 560 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59785,13 +59856,17 @@
 
 	var _materialUi = __webpack_require__(201);
 
-	var _MuiThemeProvider = __webpack_require__(266);
+	var _add = __webpack_require__(561);
 
-	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+	var _add2 = _interopRequireDefault(_add);
 
 	var _reactRedux = __webpack_require__(172);
 
 	var _messageActions = __webpack_require__(558);
+
+	var _MuiThemeProvider = __webpack_require__(266);
+
+	var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59818,6 +59893,14 @@
 		}
 
 		_createClass(TextArea, [{
+			key: 'handleSendMessage',
+			value: function handleSendMessage() {
+				if (this.props.messageObj.tempMessage.length) {
+					this.props.dispatch((0, _messageActions.processMessage)(this.props.messageObj.tempMessage));
+					this.refs.chatInput.focus();
+				}
+			}
+		}, {
 			key: '_onChange',
 			value: function _onChange(event, value) {
 				this.props.dispatch((0, _messageActions.updateMessage)(value));
@@ -59845,15 +59928,23 @@
 						'div',
 						{ className: 'chat' },
 						_react2.default.createElement(_materialUi.TextField, {
+							ref: 'chatInput',
 							hintText: '',
 							floatingLabelText: 'Say Something',
 							multiLine: true,
 							rows: 1,
+							rowsMax: 3,
 							value: this.props.messageObj.tempMessage,
 							onChange: this._onChange.bind(this),
 							onKeyDown: this._onKeyDown.bind(this),
-							className: 'chat-input' }),
-						_react2.default.createElement(_materialUi.FloatingActionButton, null)
+							className: 'chat-input',
+							fullWidth: true
+						}),
+						_react2.default.createElement(
+							_materialUi.FloatingActionButton,
+							{ onClick: this.handleSendMessage.bind(this) },
+							_react2.default.createElement(_add2.default, null)
+						)
 					)
 				);
 			}
@@ -59866,7 +59957,44 @@
 	module.exports = TextArea;
 
 /***/ },
-/* 560 */
+/* 561 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _pure = __webpack_require__(232);
+
+	var _pure2 = _interopRequireDefault(_pure);
+
+	var _SvgIcon = __webpack_require__(241);
+
+	var _SvgIcon2 = _interopRequireDefault(_SvgIcon);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var ContentAdd = function ContentAdd(props) {
+	  return _react2.default.createElement(
+	    _SvgIcon2.default,
+	    props,
+	    _react2.default.createElement('path', { d: 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z' })
+	  );
+	};
+	ContentAdd = (0, _pure2.default)(ContentAdd);
+	ContentAdd.displayName = 'ContentAdd';
+	ContentAdd.muiName = 'SvgIcon';
+
+	exports.default = ContentAdd;
+
+/***/ },
+/* 562 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59891,7 +60019,7 @@
 
 	var _reactRedux = __webpack_require__(172);
 
-	var _userActions = __webpack_require__(561);
+	var _userActions = __webpack_require__(563);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59918,6 +60046,11 @@
 		}
 
 		_createClass(InitialScreen, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				this.refs.nameInput.focus();
+			}
+		}, {
 			key: 'componentWillMount',
 			value: function componentWillMount() {
 				this.props.dispatch((0, _userActions.fetchUser)());
@@ -59955,6 +60088,10 @@
 					onTouchTap: this.handleClose
 				})];
 
+				var style = {
+					minheight: 400
+				};
+
 				return _react2.default.createElement(
 					_MuiThemeProvider2.default,
 					null,
@@ -59962,10 +60099,10 @@
 						_materialUi.Dialog,
 						{
 							title: 'Welcome to Message Me',
-
 							modal: true,
 							contentStyle: customContentStyle,
-							open: !this.props.user.hasRegistered
+							open: !this.props.user.hasRegistered,
+							bodyStyle: style
 						},
 						_react2.default.createElement(
 							'p',
@@ -59973,6 +60110,7 @@
 							'Please enter your name to begin chatting to people from around the world.'
 						),
 						_react2.default.createElement(_materialUi.TextField, {
+							ref: 'nameInput',
 							hintText: 'Enter User Name',
 							onChange: this._onChange.bind(this),
 							onKeyDown: this._onKeyDown.bind(this)
@@ -59987,7 +60125,7 @@
 	exports.default = InitialScreen;
 
 /***/ },
-/* 561 */
+/* 563 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -60021,7 +60159,7 @@
 	}
 
 /***/ },
-/* 562 */
+/* 564 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60032,26 +60170,26 @@
 
 	var _redux = __webpack_require__(179);
 
-	var _reduxLogger = __webpack_require__(563);
+	var _reduxLogger = __webpack_require__(565);
 
 	var _reduxLogger2 = _interopRequireDefault(_reduxLogger);
 
-	var _reduxThunk = __webpack_require__(564);
+	var _reduxThunk = __webpack_require__(566);
 
 	var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-	var _reducers = __webpack_require__(565);
+	var _reducers = __webpack_require__(567);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	var middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default, (0, _reduxLogger2.default)());
+	var middleware = (0, _redux.applyMiddleware)(_reduxThunk2.default);
 
 	exports.default = (0, _redux.createStore)(_reducers2.default, middleware);
 
 /***/ },
-/* 563 */
+/* 565 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -60284,7 +60422,7 @@
 	module.exports = createLogger;
 
 /***/ },
-/* 564 */
+/* 566 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -60312,7 +60450,7 @@
 	exports['default'] = thunk;
 
 /***/ },
-/* 565 */
+/* 567 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -60323,11 +60461,15 @@
 
 	var _redux = __webpack_require__(179);
 
-	var _userReducer = __webpack_require__(566);
+	var _appReducer = __webpack_require__(568);
+
+	var _appReducer2 = _interopRequireDefault(_appReducer);
+
+	var _userReducer = __webpack_require__(569);
 
 	var _userReducer2 = _interopRequireDefault(_userReducer);
 
-	var _messageReducer = __webpack_require__(567);
+	var _messageReducer = __webpack_require__(570);
 
 	var _messageReducer2 = _interopRequireDefault(_messageReducer);
 
@@ -60335,13 +60477,48 @@
 
 	var reducers = (0, _redux.combineReducers)({
 		messages: _messageReducer2.default,
-		user: _userReducer2.default
+		user: _userReducer2.default,
+		app: _appReducer2.default
 	});
 
 	exports.default = reducers;
 
 /***/ },
-/* 566 */
+/* 568 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+	var initialState = {
+		windowWidth: 0,
+		windowHeight: 0,
+		chatListHeight: 0
+	};
+
+	var messageReducer = function messageReducer() {
+		var state = arguments.length <= 0 || arguments[0] === undefined ? initialState : arguments[0];
+		var action = arguments[1];
+
+		switch (action.type) {
+			case "CHANGE_CHAT_LIST_HEIGHT":
+				{
+					return _extends({}, state, { chatListHeight: action.payload });
+					break;
+				}
+		}
+		return state;
+	};
+
+	exports.default = messageReducer;
+
+/***/ },
+/* 569 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -60387,7 +60564,7 @@
 	exports.default = userReducer;
 
 /***/ },
-/* 567 */
+/* 570 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -60430,7 +60607,6 @@
 				}
 			case "ADD_MESSAGE":
 				{
-					console.log(state);
 					state = _extends({}, state, { fetching: false, fetched: false, messages: [].concat(_toConsumableArray(state.messages), [action.payload]) });
 					break;
 				}
@@ -60451,11 +60627,11 @@
 	exports.default = messageReducer;
 
 /***/ },
-/* 568 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(569);
-	var defaultClickRejectionStrategy = __webpack_require__(570);
+	/* WEBPACK VAR INJECTION */(function(process) {var invariant = __webpack_require__(572);
+	var defaultClickRejectionStrategy = __webpack_require__(573);
 
 	var alreadyInjected = false;
 
@@ -60477,14 +60653,14 @@
 	  alreadyInjected = true;
 
 	  __webpack_require__(42).injection.injectEventPluginsByName({
-	    'TapEventPlugin':       __webpack_require__(571)(shouldRejectClick)
+	    'TapEventPlugin':       __webpack_require__(574)(shouldRejectClick)
 	  });
 	};
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 569 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -60539,7 +60715,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ },
-/* 570 */
+/* 573 */
 /***/ function(module, exports) {
 
 	module.exports = function(lastTouchEvent, clickTimestamp) {
@@ -60550,7 +60726,7 @@
 
 
 /***/ },
-/* 571 */
+/* 574 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -60578,10 +60754,10 @@
 	var EventPluginUtils = __webpack_require__(44);
 	var EventPropagators = __webpack_require__(41);
 	var SyntheticUIEvent = __webpack_require__(74);
-	var TouchEventUtils = __webpack_require__(572);
+	var TouchEventUtils = __webpack_require__(575);
 	var ViewportMetrics = __webpack_require__(75);
 
-	var keyOf = __webpack_require__(573);
+	var keyOf = __webpack_require__(576);
 	var topLevelTypes = EventConstants.topLevelTypes;
 
 	var isStartish = EventPluginUtils.isStartish;
@@ -60726,7 +60902,7 @@
 
 
 /***/ },
-/* 572 */
+/* 575 */
 /***/ function(module, exports) {
 
 	/**
@@ -60774,7 +60950,7 @@
 
 
 /***/ },
-/* 573 */
+/* 576 */
 /***/ function(module, exports) {
 
 	/**
