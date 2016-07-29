@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 
 console.log( process.env.NODE_ENV );
 
-const webServer = server.listen(config.port, config.host, function (err) {
+const webServer = server.listen(config.port, function (err) {
   if (err) throw err;
   console.log('Web server listening at http://%s:%d', config.host, config.port);
 });
