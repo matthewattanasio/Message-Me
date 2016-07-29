@@ -17,7 +17,7 @@
     "url": "https://github.com/noobs2legendz/chatman2/issues"
   },
   "engines": {
-		"node": "6.3.0"
+    "node": "6.3.0"
   },
   "homepage": "https://github.com/noobs2legendz/chatman2#readme",
   "dependencies": {
@@ -55,9 +55,8 @@
     "require-dir": "^0.3.0",
     "socket.io": "^1.4.8",
     "vinyl-source-stream": "^1.0.0",
-    "webpack": "^1.13.1"
-  },
-  "devDependencies": {
+    "webpack": "^1.13.1",
+    "webpack-stream": "^3.2.0",
     "babel-core": "^6.11.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-react-html-attrs": "^2.0.0",
@@ -70,5 +69,5 @@
     "redux-devtools": "^3.3.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
-  }
+  },
 }
