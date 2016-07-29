@@ -71,7 +71,7 @@ class Items extends Component {
 			 		onScroll={this.handleScroll.bind(this)}
 			 		>
 			 		{this.props.messages.map( function(message) {
-			 			const messageClass = ( message.userId !== theProps.user.userId ) ? 'is-response' : '';
+			 			const messageClass = ( message.userId !== theProps.user.id ) ? 'is-response' : '';
 			 			return <li
 			 				key={message.id}
 			 				className={messageClass}

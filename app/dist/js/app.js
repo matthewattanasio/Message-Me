@@ -59744,7 +59744,7 @@
 							onScroll: this.handleScroll.bind(this)
 						},
 						this.props.messages.map(function (message) {
-							var messageClass = message.userId !== theProps.user.userId ? 'is-response' : '';
+							var messageClass = message.userId !== theProps.user.id ? 'is-response' : '';
 							return _react2.default.createElement(
 								'li',
 								{

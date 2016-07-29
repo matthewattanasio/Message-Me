@@ -43,9 +43,10 @@ footer {
 	li {
 		list-style-type: none;
 		padding: 10px;
+		text-align: right;
 
 		&.is-response {
-			text-align: right;
+			text-align: left;
 		}
 	}
 
