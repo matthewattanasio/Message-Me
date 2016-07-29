@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "help",
-    "start": "node index.js",
+    "start": "NODE_ENV=production node index.js",
     "dev": "NODE_ENV=development nodemon --exec babel-node index.js -e js"
   },
   "repository": {

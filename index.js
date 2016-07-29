@@ -11,11 +11,13 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 if (process.env.NODE_ENV === 'production') {
-  config.port = 443;
+  config.port = 3000;
   config.host = 'mattmessage.herokuapp.com';
   //server.locals.assetPath = 'http://localhost:8080/';
   //server.locals.isDevelopment = false;
 }
+
+console.log( process.env.NODE_ENV );
 
 const webServer = server.listen(config.port, config.host, function (err) {
   if (err) throw err;
