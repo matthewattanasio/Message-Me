@@ -1,11 +1,11 @@
 {
-  "name": "chatman2",
+  "name": "Message Me",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "help",
-    "start": "NODE_ENV=development nodemon --exec babel-node index.js -e js"
+    "dev": "NODE_ENV=development nodemon --exec babel-node index.js -e js"
   },
   "repository": {
     "type": "git",
@@ -15,6 +15,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/noobs2legendz/chatman2/issues"
+  },
+  "engines": {
+		"node": "6.3.0"
   },
   "homepage": "https://github.com/noobs2legendz/chatman2#readme",
   "dependencies": {
