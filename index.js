@@ -3,6 +3,8 @@ var socketServer = require("./socket-server");
 
 var config = {};
 
+console.log( process.env.PORT );
+
 if (process.env.NODE_ENV === 'development') {
   config.port = 3000;
   config.host = 'localhost';
@@ -12,7 +14,7 @@ if (process.env.NODE_ENV === 'development') {
 
 if (process.env.NODE_ENV === 'production') {
   config.port = 3000;
-  config.host = 'mattmessage.herokuapp.com';
+  config.host = 'localhost';
   //server.locals.assetPath = 'http://localhost:8080/';
   //server.locals.isDevelopment = false;
 }
