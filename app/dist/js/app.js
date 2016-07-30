@@ -59699,6 +59699,20 @@
 				this.props.dispatch((0, _messageActions.fetchMessages)());
 			}
 		}, {
+			key: 'componentWillUpdate',
+			value: function componentWillUpdate() {
+				var node = this.refs.chatList;
+				this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight;
+			}
+		}, {
+			key: 'componentDidUpdate',
+			value: function componentDidUpdate() {
+				if (this.shouldScrollBottom) {
+					var node = this.refs.chatList;
+					node.scrollTop = node.scrollHeight;
+				}
+			}
+		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
 				window.addEventListener('resize', this.handleResize.bind(this)); //event to handle resizing the message list
@@ -59740,8 +59754,7 @@
 						{
 							className: 'chat-list',
 							style: listStyle,
-							ref: 'chatList',
-							onScroll: this.handleScroll.bind(this)
+							ref: 'chatList'
 						},
 						this.props.messages.map(function (message) {
 							var messageClass = message.userId !== theProps.user.id ? 'is-response' : '';

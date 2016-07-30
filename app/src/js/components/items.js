@@ -33,6 +33,18 @@ class Items extends Component {
 		this.props.dispatch( fetchMessages() );
 	}
 
+	componentWillUpdate() {
+	  let node = this.refs.chatList;
+	  this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight;
+	}
+
+	componentDidUpdate() {
+	  if (this.shouldScrollBottom) {
+	    var node = this.refs.chatList;
+	    node.scrollTop = node.scrollHeight;
+	  }
+	}
+
 	componentDidMount() {
     	window.addEventListener('resize', this.handleResize.bind(this) ); //event to handle resizing the message list
   	}
@@ -68,7 +80,6 @@ class Items extends Component {
 			 		className="chat-list"
 			 		style={listStyle}
 			 		ref="chatList"
-			 		onScroll={this.handleScroll.bind(this)}
 			 		>
 			 		{this.props.messages.map( function(message) {
 			 			const messageClass = ( message.userId !== theProps.user.id ) ? 'is-response' : '';

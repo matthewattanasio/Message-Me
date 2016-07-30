@@ -41,5 +41,5 @@ gulp.task('webpack', function() {
 
 gulp.task('default', ['connect','watch','webpack','sass']);
 
-gulp.task('staging', ['webpack','sass']);
+gulp.task('deploy', ['webpack','sass']);
 
