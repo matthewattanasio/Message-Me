@@ -59701,6 +59701,7 @@
 		}, {
 			key: 'componentWillUpdate',
 			value: function componentWillUpdate() {
+				//If the user is at the bottom
 				var node = this.refs.chatList;
 				this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight;
 			}
@@ -59715,7 +59716,8 @@
 		}, {
 			key: 'componentDidMount',
 			value: function componentDidMount() {
-				window.addEventListener('resize', this.handleResize.bind(this)); //event to handle resizing the message list
+				//event to handle resizing the message list
+				window.addEventListener('resize', this.handleResize.bind(this));
 			}
 		}, {
 			key: 'handleResize',
@@ -60636,7 +60638,6 @@
 		});
 
 		socket.on('message', function (message) {
-			console.log(message);
 			store.dispatch(messageActions.addResponse(message));
 		});
 	};

@@ -22,7 +22,6 @@ export default function (store) {
 	});
 
 	socket.on('message', message => {
-		console.log( message );
 		store.dispatch( messageActions.addResponse(message) );
 	});
 }

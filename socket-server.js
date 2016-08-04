@@ -1,6 +1,6 @@
 var io = require('socket.io');
 
-//create unique UUIDs for each message
+//create unique UUIDs for each user
 function generateUUID(){
     var d = new Date().getTime();
     var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -14,7 +14,6 @@ function generateUUID(){
 module.exports =  function (server) {
 	const socketServer = io(server);
 	const connections = [];
-	var userId = 0;
 
 	socketServer.on('connection', socket => {
 		connections.push(socket);

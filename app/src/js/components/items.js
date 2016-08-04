@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { fetchMessages } from '../actions/messageActions';
 import { changeListHeight } from '../actions/appActions';
 
-
 import {
 	blue300,
 	indigo900,
@@ -34,8 +33,9 @@ class Items extends Component {
 	}
 
 	componentWillUpdate() {
-	  let node = this.refs.chatList;
-	  this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight;
+		//If the user is at the bottom
+		let node = this.refs.chatList;
+		this.shouldScrollBottom = node.scrollTop + node.offsetHeight === node.scrollHeight;
 	}
 
 	componentDidUpdate() {
@@ -46,7 +46,8 @@ class Items extends Component {
 	}
 
 	componentDidMount() {
-    	window.addEventListener('resize', this.handleResize.bind(this) ); //event to handle resizing the message list
+		//event to handle resizing the message list
+    	window.addEventListener('resize', this.handleResize.bind(this) );
   	}
 
   	handleResize() {
